@@ -2,29 +2,33 @@ import math
 
 def getTotalX(a, b):
     """
-    We're given two arrays -> a and b.
-    We need to find a number which,
-     - Multiple of all numbers in a. (LCM)
-     - Factor of all numbers in b. (GCD)
+    a, b -> two arrays given.
+    - the number should be a multiple of all the numbers        in a.
+    - the number should be a factor of all the numbers in       b.
     """
-    l = a[0]
+    LCM = a[0]
     for num in a:
-        l = int((l*num) / math.gcd(l,num))
+        LCM = int((LCM * num) / math.gcd(LCM, num))
 
-    g = b[0]
+    GCD = b[0]
     for num in b:
-        g = math.gcd(g, num)
+        GCD = math.gcd(GCD, num)
 
     multiplesOfLCM = list()
     multiplyBy = 1
     
-    while(l*multiplyBy <= g):
-        multiplesOfLCM.append(l*multiplyBy)
+    while(LCM*multiplyBy <= g):
+        multiplesOfLCM.append(LCM*multiplyBy)
         multiplyBy += 1
     
     factorsOfGCD = list()
-    for i in range(1,g+1):
-        if g % i == 0:
-            factorsOfGCD.append(i)
+    for num in range(1,GCD+1):
+        if GCD % num == 0:
+            factorsOfGCD.append(num)
 
-    return len(set(factorsOfGCD).intersection(set(multiplesOfLCM)))
+    multipleSet = set(multiplesOfLCM)
+    factorSet = set(factorsOfGCD)
+    
+    answer = len(multipleSet.intesection(factorSet))
+    
+    return answer
