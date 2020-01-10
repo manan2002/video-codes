@@ -1,6 +1,7 @@
 def diagonalDifference(arr):
     leftDiagonalSum, rightDiagonalSum = 0, 0
     arr_len = len(arr)
+    #
     i = 0
     j = 0
     while(i < arr_len):
